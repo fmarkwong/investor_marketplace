@@ -1,0 +1,24 @@
+<h1>Listing Investors</h1>
+
+<table>
+  <thead>
+    <tr>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for investor <- @investors do %>
+    <tr>
+
+      <td>
+        <span><%= link "Show", to: Routes.investor_path(@conn, :show, investor) %></span>
+        <span><%= link "Edit", to: Routes.investor_path(@conn, :edit, investor) %></span>
+        <span><%= link "Delete", to: Routes.investor_path(@conn, :delete, investor), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Investor", to: Routes.investor_path(@conn, :new) %></span>

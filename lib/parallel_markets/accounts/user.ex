@@ -1,4 +1,4 @@
-defmodule ParallelMarkets.User do
+defmodule ParallelMarkets.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
