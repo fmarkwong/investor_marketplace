@@ -4,8 +4,10 @@ defmodule ParallelMarkets.MarketPlace do
   """
 
   import Ecto.Query, warn: false
+  alias Ecto.Changeset
   alias ParallelMarkets.Repo
 
+  alias ParallelMarkets.Accounts
   alias ParallelMarkets.MarketPlace.Investor
 
   @doc """
@@ -50,8 +52,13 @@ defmodule ParallelMarkets.MarketPlace do
 
   """
   def create_investor(attrs \\ %{}) do
+    # should call Acccounts context to do this
+    {:ok, user} = Accounts.create_user(attrs)
+
+    # can aslo do %Investor{user_id: user.id} and no put_assoc
     %Investor{}
     |> Investor.changeset(attrs)
+    |> Changeset.put_assoc(:user, user)
     |> Repo.insert()
   end
 

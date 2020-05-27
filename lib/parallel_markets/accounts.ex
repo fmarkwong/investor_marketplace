@@ -10,7 +10,7 @@ defmodule ParallelMarkets.Accounts do
 
   def create_user(attrs \\ %{}) do
     %User{}
-    |> Investor.changeset(attrs)
+    |> User.changeset(attrs)
     |> Repo.insert()
   end
 end

@@ -65,6 +65,9 @@ config :parallel_markets, ParallelMarketsWeb.Endpoint,
     ]
   ]
 
+config :parallel_markets,
+  uploads_directory: "uploads"
+
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
