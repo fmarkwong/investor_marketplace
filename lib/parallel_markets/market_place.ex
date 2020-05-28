@@ -14,12 +14,12 @@ defmodule ParallelMarkets.MarketPlace do
   Creates a user and its associated investor.
   """
   def create_investor(attrs \\ %{}) do
-    {:ok, user} = Accounts.create_user(attrs)
-
-    %Investor{}
-    |> Investor.changeset(attrs)
-    |> Changeset.put_assoc(:user, user)
-    |> Repo.insert()
+    with {:ok, user} <- Accounts.create_user(attrs) do
+      %Investor{}
+      |> Investor.changeset(attrs)
+      |> Changeset.put_assoc(:user, user)
+      |> Repo.insert()
+    end
   end
 
   def change_investor(%Investor{} = investor, %{} = attrs \\ %{}) do

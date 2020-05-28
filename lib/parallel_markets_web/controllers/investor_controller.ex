@@ -13,7 +13,6 @@ defmodule ParallelMarketsWeb.InvestorController do
   def create(conn, %{"investor" => investor_params}) do
     case MarketPlace.create_investor(investor_params) do
       {:ok, investor} ->
-        IO.puts(inspect(investor_params))
 
         case Documents.create_upload(investor_params["upload"], investor.user) do
           {:ok, _upload} ->
@@ -35,4 +34,6 @@ defmodule ParallelMarketsWeb.InvestorController do
         render(conn, "new.html", changeset: changeset)
     end
   end
+  
+  def create(conn, %{"user" => params}), do: create(conn, %{"investor" => params})
 end
