@@ -1,8 +1,0 @@
-<h1>Show Investor</h1>
-
-<ul>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.investor_path(@conn, :edit, @investor) %></span>
-<span><%= link "Back", to: Routes.investor_path(@conn, :index) %></span>
