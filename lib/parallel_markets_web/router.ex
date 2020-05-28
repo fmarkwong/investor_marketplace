@@ -16,9 +16,8 @@ defmodule ParallelMarketsWeb.Router do
   scope "/", ParallelMarketsWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
-
-    resources "/investors", InvestorController
+    get "/", InvestorController, :new
+    post "/", InvestorController, :create
   end
 
   # Other scopes may use custom stacks.

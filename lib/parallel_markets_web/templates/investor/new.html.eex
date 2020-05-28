@@ -1,5 +1,3 @@
 <h1>New Investor</h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.investor_path(@conn, :create)) %>
-
-<span><%= link "Back", to: Routes.investor_path(@conn, :index) %></span>
