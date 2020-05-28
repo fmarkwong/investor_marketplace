@@ -1,11 +1,13 @@
 # Parallel Markets Coding Challenge
 
-To start your Phoenix server:
-
+Instructions setup and run this Phoenix application
+  * `git clone git@github.com:fmarkwong/parallel_markets.git`
+  * `cd parallel_markets`
+  * Make sure you have PostgreSQL running locally and check in `config/dev.exs` that the db parameters are correct
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.setup`
   * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+  * Start Phoenix endpoint with `mix phx.server` in project root directory
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
@@ -30,7 +32,7 @@ The new investor form is at "/".  File uploads are stored at `uploads` directory
   - user_id
 
 `uploads`: belongs_to `user`
-  - fileaname
+  - filename
   - size
   - content_type
   - user_id
@@ -40,7 +42,7 @@ The new investor form is at "/".  File uploads are stored at `uploads` directory
 The app is called ParallelMarkets and has three contexts
   - `Accounts` which just has an `User` schema
   - `MarketPlace` which has an `Investor` schema 
-    - `User` and `Investor` have a 1-to-1 relationship. The idea is an Investor is a "type" of User.  We put all the attributes that are universal to all users of the system in User and for any attributes that are exclusive to Investors we place there.  In this case, it happens that all the required specified attributes seem to belong in User so Investor only has a user_id to relate it to it's User.  For example, if we find if we find alter that investors need something like an investment account number, that would go in the Investor schema.  In this way, we have a specialized schema for each type of user in our system (others could be Partner, Admin, etc.).  This makes user related code more expressive, makes authorization easier and helps seperate concerns.
+    - `User` and `Investor` have a 1-to-1 relationship. The idea is an Investor is a "type" of User.  We put all the attributes that are universal to all users of the system in User and for any attributes that are exclusive to Investors we place there.  In this case, it happens that all the required specified attributes seem to belong in User so Investor only has a user_id to relate it to it's User.  For example, if we find if we find later that investors need something like an investment account number, that would go in the Investor schema.  In this way, we have a specialized schema for each type of user in our system (others could be Partner, Admin, etc.).  This makes user related code more expressive, makes authorization easier and helps seperate concerns.
   - `Documents` which has an `Upload` schema to store our uploaded file information.
 
 The only controller is `investor_controller` which has `new` and `create` actions to render our new investor form and create one upon submit.
@@ -62,6 +64,7 @@ The path where uploads are stored on the server is set in `config/dev` as `paral
 - I took a shortcut for handling the error alert when the user submits without an upload file. See the comment at `MarketPlace#create_investor` for details 
 - Tests. Very important, but didn't have time. 
 - Authentication and authorization
+- Form field validation
 - Implement the frontend with [`Phoenix LiveView`](https://github.com/phoenixframework/phoenix_live_view). SPA-like UI with no JavaScript ftw!
 
 
