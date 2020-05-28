@@ -11,6 +11,9 @@ defmodule ParallelMarkets.Accounts.User do
     field :state, :string
     field :zip, :string
 
+    has_one :investor, ParallelMarkets.MarketPlace.Investor
+    has_many :uploads, ParallelMarkets.Documents.Upload
+
     timestamps()
   end
 

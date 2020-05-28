@@ -35,5 +35,7 @@ defmodule ParallelMarketsWeb.InvestorController do
     end
   end
   
+  # TODO: this is needed because the way we're handling error reporting empty investor fields is a little wonky 
+  # at Marketplace#create_investor we try to create a user with the attributes.  If the attributes are missing we return an error tuple with a %User changeset.  So the form will have a "user" subfield instead of an "investor" subfield, so we need to convert that here.
   def create(conn, %{"user" => params}), do: create(conn, %{"investor" => params})
 end

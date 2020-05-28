@@ -14,6 +14,10 @@ defmodule ParallelMarkets.MarketPlace do
   Creates a user and its associated investor.
   """
   def create_investor(attrs \\ %{}) do
+    # TODO: if required user attrs are missing, this will
+    # return an error tuple with %User changeset which requires some hackiness with InvestorController#create
+    # to fix, we need to somehow convert the User error changset
+    # to an Investor error changeset
     with {:ok, user} <- Accounts.create_user(attrs) do
       %Investor{}
       |> Investor.changeset(attrs)
