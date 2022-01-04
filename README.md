@@ -1,4 +1,4 @@
-# Parallel Markets Coding Challenge
+# Investor Marketplace
 
 Instructions setup and run this Phoenix application
   * `git clone git@github.com:fmarkwong/parallel_markets.git`
